@@ -106,4 +106,53 @@ See mrfdump, 24kdiff
 ==== TODOS
 
 Find HU orientation info
-If tools becomes useful to help HU owners to check and compare extracted logo.mrf, then PC versions would be helpful
+If tools becomes useful to help HU owners to check and compare extracted logo.mrf, then PC versions would be helpful. Alternative is use simple VM Linux (see below)
+
+==== simple VM Linux
+
+No registration or login required. Simple to use
+
+- download 24kdiff and mrfdump from repository  
+- need to strip the .txt extension (win11 https://www.windowsdigitals.com/how-to-change-or-remove-file-extension-in-windows-11/ )  
+- goto https://bellard.org/jslinux/?ref=itsfoss.com  
+- click Startup Link for Alpine Linux 3.12.0 (probaby any will work)  
+- upload 24kdiff mrfdump and your logo files via upload icon on bottom left  
+- below is remaining screen capture (ls is list, like DOS DIR, chmod +x make file executable, ./ is path to current directory. So to run executable in current directory type ./executable_name
+
+Loading...  
+ 
+Welcome to JS/Linux (i586)  
+ 
+Use 'vflogin username' to connect to your account.  
+You can create a new account at https://vfsync.org/signup .  
+Use 'export_file filename' to export a file to your computer.  
+Imported files are written to the home directory.  
+ 
+localhost:~# ls  
+24kdiff     hello.c     hlogo.mrf   readme.txt  
+bench.py    hello.js    mrfdump     rhlogo.mrf  
+localhost:~# chmod +x 24kdiff  
+localhost:~# chmod +x mrfdump  
+localhost:~# ./24kdiff hlogo.mrf rhlogo.mrf  
+comparing hlogo.mrf rhlogo.mrf  
+Files hlogo.mrf.24k and rhlogo.mrf.24k are identical  
+localhost:~# ./mrfdump hlogo.mrf  
+ 
+ 
+==== hlogo.mrf  
+ 
+= MD1ROM Header  
+ 
+partition length 0x07a3c00  
+partition name logo  
+ 
+= Panel  
+ 
+Lvds  
+1024  
+600  
+ 
+= LOGO  
+ 
+1024  
+600  
