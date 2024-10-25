@@ -1,0 +1,73 @@
+mrfdump
+
+	dump some key parameters of mrf file
+
+Options
+
+	no option for now
+
+Description
+
+	Initial revision just dump a few key parameters
+
+	Size of mrf
+	- not file size would could be padded by computer file system.
+	- not even # of bytes in the file. Could be longer than the valid region for various reasons.
+		For example, extracted too much from HU (I did extra 512B on my first try)
+	- not reserved logo.mrf partition size in EMMC (64MB on my 2GB 32bit xyauto 1.80.1 horiz HU)
+	- ~8MB
+
+	Name of mrf
+	- Seems to be always logo
+
+	Panel parameters
+	- Display character 2-5 character of the panel parameter block.
+		Block is usually marked with [Mipi_Init_S] or [Lvds_Init_S]
+		Likely just marking beginning of parameter block
+	- 2 panel dimensions.
+		Unclear which one is horizontal and vertical from examining both horiz and vert logo.mrfs
+
+	LOGO parameter
+	- 2 logo image dimension. Also unclear which is horizontal and vertical
+
+Example
+
+% ./mrfdump logo.mrf
+
+
+==== logo.mrf
+
+= MD1ROM Header
+
+partition length 0x007a3c00
+partition name logo
+
+= Panel
+
+Lvds
+1024
+600
+
+= LOGO
+
+1024
+60
+
+
+% find ./ -type f -name "*.mrf" -exec ./mrfdump "{}" \; > results
+
+Run mrfdump on all mrf files in a directory and dump results into a file
+
+% find ./ -type f -name "*.mrf" -exec ./24kdiff rhlogo.mrf "{}" \;
+comparing rhlogo.mrf .//rhlogo.mrf
+Files /dev/fd/63 and /dev/fd/62 are identical
+comparing rhlogo.mrf .//htoylogo.mrf
+Files /dev/fd/63 and /dev/fd/62 are identical
+comparing rhlogo.mrf .//7705logo.mrf
+Binary files /dev/fd/63 and /dev/fd/62 differ
+comparing rhlogo.mrf .//9365logo.mrf
+Binary files /dev/fd/63 and /dev/fd/62 differ
+comparing rhlogo.mrf .//vlogo.mrf
+Binary files /dev/fd/63 and /dev/fd/62 differ
+comparing rhlogo.mrf .//hlogo.mrf
+Files /dev/fd/63 and /dev/fd/62 are identical
