@@ -102,3 +102,8 @@ GUESSES
 ==== Tools
 
 See mrfdump, 24kdiff
+
+==== TODOS
+
+Find HU orientation info
+If tools becomes useful to help HU owners to check and compare extracted logo.mrf, then PC versions would be helpful
