@@ -1,5 +1,6 @@
 #!/bin/bash
 # use temp file rather than pipes to be more VM linux terminal compatible
+# test on both macOS and web access linux VM
 
 fileOne=${1}
 fileTwo=${2}
