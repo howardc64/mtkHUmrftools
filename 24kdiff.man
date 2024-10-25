@@ -1,0 +1,24 @@
+24kdiff
+
+	compares initial ~24k region between 2 mrf files. Ignoring the boot images.
+
+As of 2024, MTK HU logo.mrf appears to have only first 24k (actually slightly less) region that is important. Remaining bits are just a couple of boot images. Majority of this 24k are also padding but important info is inside
+
+
+Options
+
+	no options now
+
+Example
+
+% ./24kdiff hlogo.mrf rhlogo.mrf 
+comparing hlogo.mrf rhlogo.mrf
+Files /dev/fd/63 and /dev/fd/62 are identical
+
+./24kdiff hlogo.mrf vlogo.mrf 
+comparing hlogo.mrf vlogo.mrf
+Binary files /dev/fd/63 and /dev/fd/62 differ
+
+hlogo from xyauto for 1024*600 2-4GB horiz lvds panel HU
+vlogo from xyauto for 2-4GB vertical lvds panel HU
+rhlogo extracted from my HU (was just hlogo + change boot image to Toyota logo)
