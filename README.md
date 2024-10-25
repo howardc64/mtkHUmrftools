@@ -117,7 +117,8 @@ No registration or login required. Simple to use
 - goto https://bellard.org/jslinux/?ref=itsfoss.com  
 - click Startup Link for Alpine Linux 3.12.0 (probaby any will work)  
 - upload 24kdiff mrfdump and your logo files via upload icon on bottom left  
-- below is remaining screen capture (ls is list, like DOS DIR, chmod +x make file executable, ./ is path to current directory. So to run executable in current directory type ./executable_name
+- below is remaining screen capture, click code on upper left to see with out markdown formatting
+-   (ls is list, like DOS DIR, chmod +x make file executable, ./ is path to current directory. So to run executable in current directory type ./executable_name
 
 Loading...  
  
