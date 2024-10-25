@@ -1,0 +1,9 @@
+#!/bin/bash
+
+fileOne=${1}
+fileTwo=${2}
+numBytes=24064
+
+echo "comparing" ${1} ${2}
+diff -s <(head -c ${numBytes} ${fileOne}) <(head -c ${numBytes} ${fileTwo})
+

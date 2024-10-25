@@ -1,0 +1,27 @@
+#!/bin/bash
+# mrfdump shell script
+
+headerLength=4
+headerName=8
+panelFirst=792
+panelSecond=796
+logoFirst=1296
+logoSecond=1300
+displayIF=3585
+
+printf "\n\n"
+echo "====" ${1}
+printf "\n= MD1ROM Header\n\n"
+printf "partition length 0x"
+od -A x4 -t x4 -j${headerLength} -N4 ${1} | head -1 | cut -b9- | tr -d " \t\r"
+printf "partition name "
+od -c -j${headerName} -N32 ${1} | head -1 | cut -b9- | tr -d " \t\r0\\"
+printf "\n= Panel\n\n"
+od -c -j${displayIF} -N4 ${1} | head -1 | cut -b9- | tr -d " \t\r"
+od -A x2 -t u2 -j${panelFirst} -N2 ${1} | head -1 | cut -b9- | tr -d " \t\r"
+od -A x2 -t u2 -j${panelSecond} -N2 ${1} | head -1 |cut -b9- | tr -d " \t\r"
+
+printf "\n= LOGO\n\n"
+od -A x2 -t u2 -j${logoFirst} -N2 ${1} | head -1 | cut -b9- | tr -d " \t\r"
+od -A x2 -t u2 -j${logoSecond} -N2 ${1} | head -1 | cut -b9- | tr -d " \t\r"
+printf "\n"
