@@ -1,5 +1,6 @@
 #!/bin/bash
 # mrfdump shell script
+# test on both macOS and web access linux VM
 
 headerLength=4
 headerName=8
