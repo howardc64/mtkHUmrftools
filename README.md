@@ -15,7 +15,7 @@ Just a couple of simple tools for comparing and dump a few parameters in MRF. Ca
 
 ==== Programming Background
 
-Initial version done by rusty UNIX shell programmer (30 years ago)
+Initial version done by rusty UNIX shell programmer ( 40 years ago! )  
 
 - Done on macOS  
 - Require basic ~UNIX/Linux/macOS shell programming background  
@@ -58,12 +58,12 @@ Likely the remaining format spec. Maybe some offsets to other regions?
 300h - 4FFh
 
 Panel Section  
-Contains 2 resolution #s  
+Contains 2 resolution #s, doesn't help with orientation from examining fiew mrfs  
 
 500h - DFFh
 
 LOGO description section  
-Contains 2 resolution #s  
+Contains 2 resolution #s, doesn't help with orientation from examining fiew mrfs  
 
 E00h - ??? ( < 5E00h )  
 
@@ -106,7 +106,7 @@ See mrfdump, 24kdiff
 ==== TODOS
 
 Find HU orientation info
-If tools becomes useful to help HU owners to check and compare extracted logo.mrf, then PC versions would be helpful. Alternative is use simple VM Linux (see below)
+If tools becomes useful to help HU owners to check and compare extracted logo.mrf, simple alternative is use simple VM Linux (see below) so maybe PC verson unnecessary?  
 
 ==== simple VM Linux
 
@@ -114,7 +114,7 @@ No registration or login required. Simple to use
 
 - download 24kdiff and mrfdump from repository  
 - need to strip the .txt extension (win11 https://www.windowsdigitals.com/how-to-change-or-remove-file-extension-in-windows-11/ )  
-- goto https://bellard.org/jslinux/?ref=itsfoss.com  
+- goto https://bellard.org/jslinux/?ref=itsfoss.com ( faq https://bellard.org/jslinux/faq.html )  
 - click Startup Link for Alpine Linux 3.12.0 (probaby any will work)  
 - upload 24kdiff mrfdump and your logo files via upload icon on bottom left  
 - below is remaining screen capture, click code on upper left to see with out markdown formatting
