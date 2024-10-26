@@ -10,10 +10,12 @@ panelSecond=796
 logoFirst=1296
 logoSecond=1300
 displayIF=3585
+gzfile=0
 
 if [[ $1 =~ \.gz$ ]];
 then
-	if [ -d "customer_ota" ]
+	gzfile=1
+	if [ -e "customer_ota" ]
 	then
         	echo "customer_ota directory already exist"
         	exit 1
@@ -47,4 +49,6 @@ od -A x2 -t u2 -j${logoFirst} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r
 od -A x2 -t u2 -j${logoSecond} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
 printf "\n"
 
-rm -rf customer_ota
+if [[ "${gzfile}" -eq 1 ]]; then
+	rm -rf customer_ota
+fi
