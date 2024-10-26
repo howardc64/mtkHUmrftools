@@ -27,12 +27,15 @@ else
 	exit 1
 fi
 
-printf "\n\n"
-echo "====" ${1}
+printf "\n"
+echo "****" ${1}
 printf "\n= MD1ROM Header\n\n"
-printf "partition length 0x"
-od -A x4 -t x4 -j${headerLength} -N4 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
-printf "partition name "
+printf "length hex "
+LengthStr="0x$(od -A x4 -t x4 -j${headerLength} -N4 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r")"
+echo ${LengthStr}
+echo -n "length MB  "
+echo "scale=1;" $((${LengthStr})) / 1048576 | bc -l
+printf "name       "
 od -c -j${headerName} -N32 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r0\\"
 printf "\n= Panel\n\n"
 od -c -j${displayIF} -N4 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
