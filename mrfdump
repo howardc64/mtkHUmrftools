@@ -1,6 +1,7 @@
 #!/bin/bash
 # mrfdump shell script
-# test on both macOS and web access linux VM
+# can handle .gz and .mrf files
+# if gz file, must not have customer_ota directory already in directory
 
 headerLength=4
 headerName=8
@@ -10,19 +11,37 @@ logoFirst=1296
 logoSecond=1300
 displayIF=3585
 
+if [[ $1 =~ \.gz$ ]];
+then
+	if [ -d "customer_ota" ]
+	then
+        	echo "customer_ota directory already exist"
+        	exit 1
+	fi	
+	tar -xzf ${1}
+	mrfFile="customer_ota/logo.mrf"
+elif [[ $1 =~ \.mrf$ ]];
+then
+	mrfFile="${1}"
+else
+	exit 1
+fi
+
 printf "\n\n"
 echo "====" ${1}
 printf "\n= MD1ROM Header\n\n"
 printf "partition length 0x"
-od -A x4 -t x4 -j${headerLength} -N4 ${1} | head -1 | cut -b9- | tr -d " \t\r"
+od -A x4 -t x4 -j${headerLength} -N4 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
 printf "partition name "
-od -c -j${headerName} -N32 ${1} | head -1 | cut -b9- | tr -d " \t\r0\\"
+od -c -j${headerName} -N32 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r0\\"
 printf "\n= Panel\n\n"
-od -c -j${displayIF} -N4 ${1} | head -1 | cut -b9- | tr -d " \t\r"
-od -A x2 -t u2 -j${panelFirst} -N2 ${1} | head -1 | cut -b9- | tr -d " \t\r"
-od -A x2 -t u2 -j${panelSecond} -N2 ${1} | head -1 |cut -b9- | tr -d " \t\r"
+od -c -j${displayIF} -N4 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
+od -A x2 -t u2 -j${panelFirst} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
+od -A x2 -t u2 -j${panelSecond} -N2 ${mrfFile} | head -1 |cut -b9- | tr -d " \t\r"
 
 printf "\n= LOGO\n\n"
-od -A x2 -t u2 -j${logoFirst} -N2 ${1} | head -1 | cut -b9- | tr -d " \t\r"
-od -A x2 -t u2 -j${logoSecond} -N2 ${1} | head -1 | cut -b9- | tr -d " \t\r"
+od -A x2 -t u2 -j${logoFirst} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
+od -A x2 -t u2 -j${logoSecond} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
 printf "\n"
+
+rm -rf customer_ota
