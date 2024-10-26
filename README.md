@@ -4,7 +4,7 @@ tools to decipher and compare MediaTek HeadUnit logo.mrf file
 
 ==== Versions
 
-0.1	Initial proto dev release (macOS only)
+0.1	Initial proto dev release (macOS and Linux only, can use easy online free Linux VMs, directions below)  
 
 ==== Purpose
 
