@@ -5,27 +5,27 @@
 
 fileOne=${1}
 mrfFile=${2}
-numBytes=24064
+numBytes=$((0x5E00))
 tempFile1=${1}.24k
 tempFile2=${2}.24k
 gzfile=0
 
 if [[ $1 =~ \.gz$ ]];
 then
-        echo "first file can not be .gz"
-        exit 1
+	echo "first file can not be .gz"
+	exit 1
 fi
 
 if [[ $2 =~ \.gz$ ]];
 then
-        gzfile=1
-        if [ -e "customer_ota" ]
-        then
-                echo "customer_ota directory already exist"
-                exit 1
-        fi
-        tar -xzf ${2}
-        mrfFile="customer_ota/logo.mrf"
+	gzfile=1
+	if [ -e "customer_ota" ]
+	then
+        	echo "customer_ota directory already exist"
+        	exit 1
+	fi	
+	tar -xzf ${2}
+	mrfFile="customer_ota/logo.mrf"
 fi
 
 echo "comparing" ${1} ${2}
@@ -35,5 +35,5 @@ diff -s ${tempFile1} ${tempFile2}
 rm ${tempFile1} ${tempFile2}
 
 if [[ "${gzfile}" -eq 1 ]]; then
-        rm -rf customer_ota
+	rm -rf customer_ota
 fi
