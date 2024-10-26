@@ -1,5 +1,5 @@
 NAME
-	24kdiff - compares initial ~24k region between 2 mrf files. Ignoring the boot images.
+	24kdiff - compares initial ~24k region between an mrf file with another mrf file or gz file containing a logo.mrf. Ignoring the boot images.
 
 	As of 2024, MTK HU logo.mrf appears to have only first 24k (actually slightly less) region that is important. Remaining bits are just a couple of boot images. Majority of this 24k are also padding but important info is inside
 
@@ -9,7 +9,12 @@ OPTIONS
 
 SNOPSYS
 
-	24kdiff mrffile1 mrffile2
+	24kdiff mrffile1 file2
+
+DESCRIPTION
+
+	file2 can be .mrf or .gz file
+	for .gz file, directory must not already contain customer_ota
 
 EXAMPLE
 
@@ -17,7 +22,7 @@ EXAMPLE
 comparing hlogo.mrf rhlogo.mrf
 Files hlogo.mrf.24k and rhlogo.mrf.24k are identical
 
-./24kdiff hlogo.mrf vlogo.mrf 
+% ./24kdiff hlogo.mrf vlogo.mrf 
 comparing hlogo.mrf vlogo.mrf
 Binary files hlogo.mrf.24k and vlogo.mrf.24k differ
 
@@ -25,19 +30,15 @@ hlogo from xyauto for 1024*600 2-4GB horiz lvds panel HU
 vlogo from xyauto for 2-4GB vertical lvds panel HU
 rhlogo extracted from my HU (was just hlogo + change boot image to Toyota logo)
 
-% find ./ -type f -name "*.mrf" -exec ./24kdiff rhlogo.mrf "{}" \;
-comparing rhlogo.mrf .//rhlogo.mrf
-Files rhlogo.mrf.24k and .//rhlogo.mrf.24k are identical
-rm: .//rhlogo.mrf.24k: No such file or directory
-comparing rhlogo.mrf .//htoylogo.mrf
-Files rhlogo.mrf.24k and .//htoylogo.mrf.24k are identical
-comparing rhlogo.mrf .//7705logo.mrf
-Binary files rhlogo.mrf.24k and .//7705logo.mrf.24k differ
-comparing rhlogo.mrf .//9365logo.mrf
-Binary files rhlogo.mrf.24k and .//9365logo.mrf.24k differ
-comparing rhlogo.mrf .//vlogo.mrf
-Binary files rhlogo.mrf.24k and .//vlogo.mrf.24k differ
-comparing rhlogo.mrf .//hlogo.mrf
-Files rhlogo.mrf.24k and .//hlogo.mrf.24k are identical
+% ./24kdiff hlogo.mrf 57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz
+comparing hlogo.mrf 57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz
+Binary files hlogo.mrf.24k and 57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz.24k differ
 
-This line compares all mrf file in a directory with rhlogo.mrf
+% find ./ -type f -name "*.mrf" -exec ./24kdiff rhlogo.mrf "{}" \;
+
+This line compares rhlogo.mrf with all mrf file in a directory
+
+% find ./ -type f -name "*.gz" -exec ./24kdiff rhlogo.mrf "{}" \;
+
+This compares rhlogo.mrf with all the .gz files in a directory
+
