@@ -10,7 +10,7 @@ tools to decipher and compare MediaTek HeadUnit logo.mrf file
 
 Just a couple of simple tools for comparing and dump a few parameters in MRF. Can be useful to check
 
-- Are 2 MRF same?  
+- Are 2 MRFs same?  
 - Extracted MRF have valid MRF bits? To confirm no extraction mistakes  
 
 ==== Programming Background
@@ -19,7 +19,7 @@ Initial version done by rusty UNIX shell programmer ( 40 years ago! )
 
 - Done on macOS  
 - Require basic ~UNIX/Linux/macOS shell programming background  
-- She’ll script might look simple but if don’t know what $PATH, ./, chmod +x, man are, then need basic learning on UNIX shell scripts to understand this stuff  
+- bash shell script might look simple but if don’t know what $PATH, ./, chmod +x, man are, then need basic learning on UNIX shell scripts to understand this stuff  
 
 ==== Architecture Understanding
 
