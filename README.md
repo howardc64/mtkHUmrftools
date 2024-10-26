@@ -105,8 +105,9 @@ See mrfdump, 24kdiff
 
 ==== TODOS
 
-Find HU orientation info
-If tools becomes useful to help HU owners to check and compare extracted logo.mrf, simple alternative is use simple VM Linux (see below) so maybe PC verson unnecessary?  
+Find HU orientation info would be hugely helpful
+Find HU LCD panel type would be ideal but probably difficult without knowning manufacturers code for the panel type. Doesn't have panel model string.
+If tools becomes useful to help HU owners to check and compare extracted logo.mrf, PC version is desirable. Simple alternative now is use simple online VM Linux (see below)
 
 ==== simple VM Linux
 
