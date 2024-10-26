@@ -1,12 +1,18 @@
-mrfdump
+NAME
+	mrfdump - dump some key parameters of mrf file
 
-	dump some key parameters of mrf file
+SYOPSIS
+
+	mrfdump file
 
 Options
 
 	no option for now
 
 Description
+
+	file can be .mrf or .gz file
+	for .gz file, directory must not already contain customer_ota
 
 	Initial revision just dump a few key parameters
 
@@ -54,20 +60,9 @@ Lvds
 60
 
 
-% find ./ -type f -name "*.mrf" -exec ./mrfdump "{}" \; > results
+Run mrfdump on all gz files with logo.mrf in a directory and dump results into a file
 
-Run mrfdump on all mrf files in a directory and dump results into a file
+% find ./ -type f -name "*.gz" -exec ./mrfdump "{}" \; > display_driver_only_results
 
-% find ./ -type f -name "*.mrf" -exec ./24kdiff rhlogo.mrf "{}" \;
-comparing rhlogo.mrf .//rhlogo.mrf
-Files /dev/fd/63 and /dev/fd/62 are identical
-comparing rhlogo.mrf .//htoylogo.mrf
-Files /dev/fd/63 and /dev/fd/62 are identical
-comparing rhlogo.mrf .//7705logo.mrf
-Binary files /dev/fd/63 and /dev/fd/62 differ
-comparing rhlogo.mrf .//9365logo.mrf
-Binary files /dev/fd/63 and /dev/fd/62 differ
-comparing rhlogo.mrf .//vlogo.mrf
-Binary files /dev/fd/63 and /dev/fd/62 differ
-comparing rhlogo.mrf .//hlogo.mrf
-Files /dev/fd/63 and /dev/fd/62 are identical
+This runs mrfdump on all gz files (with logo.mrf inside) in a directory and dump results into a file
+
