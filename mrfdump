@@ -4,12 +4,12 @@
 # if gz file, must not have customer_ota directory already in directory
 
 headerLength=4
-headerName=8
-panelFirst=792
-panelSecond=796
-logoFirst=1296
-logoSecond=1300
-displayIF=3585
+headerName=0x8
+panelFirst=0x318
+panelSecond=0x31C
+logoFirst=0x510
+logoSecond=0x514
+displayIF=0xE01
 gzfile=0
 
 if [[ $1 =~ \.gz$ ]];
