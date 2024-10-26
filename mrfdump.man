@@ -5,11 +5,11 @@ SYOPSIS
 
 	mrfdump file
 
-Options
+OPTIONS
 
 	no option for now
 
-Description
+DESCRIPTION
 
 	file can be .mrf or .gz file
 	for .gz file, directory must not already contain customer_ota
@@ -36,7 +36,7 @@ Description
 	LOGO parameter
 	- 2 logo image dimension. Also unclear which is horizontal and vertical
 
-Example
+EXAMPLE
 
 % ./mrfdump logo.mrf
 
@@ -60,9 +60,7 @@ Lvds
 60
 
 
-Run mrfdump on all gz files with logo.mrf in a directory and dump results into a file
-
 % find ./ -type f -name "*.gz" -exec ./mrfdump "{}" \; > display_driver_only_results
 
-This runs mrfdump on all gz files (with logo.mrf inside) in a directory and dump results into a file
+This runs mrfdump on all .gz files (with logo.mrf inside) in a directory and dump results into a file
 
