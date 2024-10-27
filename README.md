@@ -53,7 +53,7 @@ Padded with FFh to end of this region
 200h - 2FFh
 
 MRFv1.1.1  
-Likely the remaining format spec. Maybe some offsets to other regions?  
+Identical in the 3 different MRFs I checked
 
 300h - 4FFh
 
