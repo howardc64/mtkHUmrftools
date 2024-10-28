@@ -2,6 +2,8 @@
 
 tools to decipher and compare MediaTek HeadUnit logo.mrf file
 
+Note the shell script tools will download as .txt on macOS and Windows. Need to remove the .txt extension to use on UNIX/linux/macOS.
+
 ==== Versions
 
 0.1	Initial proto dev release (macOS and Linux only, can use easy online free Linux VMs, directions below)  
