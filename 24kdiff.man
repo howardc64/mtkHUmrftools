@@ -31,7 +31,6 @@ vlogo from xyauto for 2-4GB vertical lvds panel HU
 rhlogo extracted from my HU (was just hlogo + change boot image to Toyota logo)
 
 % ./24kdiff hlogo.mrf 57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz
-comparing hlogo.mrf 57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz
 Binary files hlogo.mrf.24k and 57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz.24k differ
 
 % find ./ -type f -name "*.mrf" -exec ./24kdiff logo.bin "{}" \;
