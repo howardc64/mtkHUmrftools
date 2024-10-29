@@ -22,7 +22,7 @@ then
 	fi	
 	tar -xzf ${1}
 	mrfFile="customer_ota/logo.mrf"
-elif [[ $1 =~ \.mrf$ ]];
+elif [[ $1 =~ \.mrf$ || $1 =~ \.bin$ ]];
 then
 	mrfFile="${1}"
 else
