@@ -158,8 +158,7 @@ Lvds
 
 ==== Simple online free Linux VM to compare logo.bin with display drivers
 
-video https://youtu.be/bFftLvbbAtI
-
+video https://youtu.be/vqCk5WipFVo
 localhost:~# chmod +x 24kdiff
 localhost:~# unzip Display\ driver\ only.zip
 localhost:~# mv 24kdiff Display\ driver\ only
