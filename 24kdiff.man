@@ -34,11 +34,11 @@ rhlogo extracted from my HU (was just hlogo + change boot image to Toyota logo)
 comparing hlogo.mrf 57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz
 Binary files hlogo.mrf.24k and 57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz.24k differ
 
-% find ./ -type f -name "*.mrf" -exec ./24kdiff rhlogo.mrf "{}" \;
+% find ./ -type f -name "*.mrf" -exec ./24kdiff logo.bin "{}" \;
 
-This line compares rhlogo.mrf with all mrf file in a directory
+This line compares logo.bin with all mrf file in a directory
 
-% find ./ -type f -name "*.gz" -exec ./24kdiff rhlogo.mrf "{}" \;
+% find ./ -type f -name "*.gz" -exec ./24kdiff logo.bin "{}" \;
 
-This compares rhlogo.mrf with all the .gz files in a directory
+This compares logo.bin with all the .gz files in a directory
 
