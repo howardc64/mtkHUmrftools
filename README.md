@@ -111,7 +111,9 @@ Find HU orientation info would be hugely helpful
 Find HU LCD panel type would be ideal but probably difficult without knowning manufacturers code for the panel type. Doesn't have panel model string.
 If tools becomes useful to help HU owners to dump and compare extracted logo.mrf, PC version is desirable. Simple alternative now is use simple online VM Linux (see below)
 
+====================================================================================
 ==== simple online free Linux VM to dump logo.bin
+====================================================================================
 
 No registration or login required. Simple to use
 
@@ -158,8 +160,10 @@ Lvds
 1024
 600
 
+====================================================================================
 ==== Simple online free Linux VM to compare logo.bin with display drivers
 ==== 15min run time on free online Linux VM. Much faster on own PC ( macOS / Linux )
+====================================================================================
 
 video https://youtu.be/vqCk5WipFVo
 localhost:~# chmod +x 24kdiff
