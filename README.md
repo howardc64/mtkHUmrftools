@@ -159,6 +159,7 @@ Lvds
 600
 
 ==== Simple online free Linux VM to compare logo.bin with display drivers
+==== 15min run time on free online Linux VM. Much faster on own PC ( macOS / Linux )
 
 video https://youtu.be/vqCk5WipFVo
 localhost:~# chmod +x 24kdiff
