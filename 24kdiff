@@ -28,7 +28,6 @@ then
 	mrfFile="customer_ota/logo.mrf"
 fi
 
-echo "comparing" ${1} ${2}
 head -c ${numBytes} ${fileOne} > ${tempFile1}
 head -c ${numBytes} ${mrfFile} > ${tempFile2}
 diff -s ${tempFile1} ${tempFile2}
