@@ -1,5 +1,5 @@
 NAME
-	24kdiff - compares initial ~24k region between an mrf file with another mrf file or gz file containing a logo.mrf. Ignoring the boot images.
+	24kdiff - compares initial ~24k region between an .mrf (or .bin) file with another .mrf file or .gz file containing a logo.mrf. Ignoring the boot images.
 
 	As of 2024, MTK HU logo.mrf appears to have only first 24k (actually slightly less) region that is important. Remaining bits are just a couple of boot images. Majority of this 24k are also padding but important info is inside
 
