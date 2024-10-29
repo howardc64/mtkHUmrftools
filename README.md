@@ -109,9 +109,9 @@ See mrfdump, 24kdiff
 
 Find HU orientation info would be hugely helpful
 Find HU LCD panel type would be ideal but probably difficult without knowning manufacturers code for the panel type. Doesn't have panel model string.
-If tools becomes useful to help HU owners to check and compare extracted logo.mrf, PC version is desirable. Simple alternative now is use simple online VM Linux (see below)
+If tools becomes useful to help HU owners to dump and compare extracted logo.mrf, PC version is desirable. Simple alternative now is use simple online VM Linux (see below)
 
-==== simple VM Linux
+==== simple online free Linux VM to dump logo.bin
 
 No registration or login required. Simple to use
 
@@ -132,31 +132,186 @@ You can create a new account at https://vfsync.org/signup .
 Use 'export_file filename' to export a file to your computer.  
 Imported files are written to the home directory.  
  
-localhost:~# ls  
-24kdiff     hello.c     hlogo.mrf   readme.txt  
-bench.py    hello.js    mrfdump     rhlogo.mrf  
-localhost:~# chmod +x 24kdiff  
-localhost:~# chmod +x mrfdump  
-localhost:~# ./24kdiff hlogo.mrf rhlogo.mrf  
-comparing hlogo.mrf rhlogo.mrf  
-Files hlogo.mrf.24k and rhlogo.mrf.24k are identical  
-localhost:~# ./mrfdump hlogo.mrf  
- 
- 
-==== hlogo.mrf  
- 
-= MD1ROM Header  
- 
-partition length 0x07a3c00  
-partition name logo  
- 
-= Panel  
- 
-Lvds  
-1024  
-600  
- 
-= LOGO  
- 
-1024  
-600  
+localhost:~# ls
+bench.py    hello.c     hello.js    logo.bin    mrfdump     readme.txt
+localhost:~# chmod +x mrfdump
+localhost:~# ./mrfdump logo.bin
+ 
+**** logo.bin
+ 
+= MD1ROM Header
+ 
+length hex 0x07a3c00
+length MB  7.6
+name       logo
+ 
+= Panel
+ 
+Lvds
+1024
+600
+ 
+= LOGO
+ 
+1024
+600
+
+==== Simple online free Linux VM to compare logo.bin with display drivers
+
+video https://youtu.be/bFftLvbbAtI
+
+localhost:~# chmod +x 24kdiff
+localhost:~# unzip Display\ driver\ only.zip
+localhost:~# mv 24kdiff Display\ driver\ only
+localhost:~# mv logo.bin Display\ driver\ only
+localhost:~# cd Display\ driver\ only
+localhost:~/Display driver only# find ./ -type f -name "*.gz" -exec ./24kdiff logo.bin "{}" \;
+
+shell session below ====
+
+localhost:~# ls
+24kdiff                  hello.c                  readme.txt
+Display driver only.zip  hello.js
+bench.py                 logo.bin
+localhost:~# chmod +x 24kdiff
+localhost:~# unzip Display\ driver\ only.zip
+Archive:  Display driver only.zip
+  inflating: Display driver only/gongban_YT7216C_XHS-v1.73.8_e251a41c_ota.tar.gz
+  inflating: Display driver only/57_720x1920_WD123FHM30AA-D2-v1.73.8_a78b3924_ota.tar.gz
+  inflating: Display driver only/gongban_YT57XX_v1.70_e834d203_ota.tar.gz
+  inflating: Display driver only/gongban_57_logo-v1.73.8_9b3df880_ota.tar.gz
+  inflating: Display driver only/gongban_57xx_1024x768_LG-v1.73.8_6c2ecf45_ota.tar.gz
+  inflating: Display driver only/gongban_YT5760B_YT-v1.73.8_fed699ec_ota.tar.gz
+  inflating: Display driver only/gongban_57xx_768x1024_mipi-v1.73.8_c57dd4d2_ota.tar.gz
+  inflating: Display driver only/57_720x1920_K1238S6248-Q05-01-v1.73.8_f330f7a1_ota.tar.gz
+  inflating: Display driver only/gongban_YT57XX_WG_TBD_-v7.3_7_8239d0b4_ota.tar.gz
+  inflating: Display driver only/gongban_57xx_JC_768x1024-v1.73.8_bead0010_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_JMG_12.1logo-v1.73.8_7144dfda_ota.tar.gz
+  inflating: Display driver only/57_1200x2000_YT104IHLXL002-A-v1.73.8_a271ef72_ota.tar.gz
+  inflating: Display driver only/57_720x1280_WD101HBM30TE-U6-v1.73.8_aa03f960_ota.tar.gz
+  inflating: Display driver only/gongban_57xx_1024X600MIPI_9_ips-v1.73.8_c4982822_ota.tar.gz
+  inflating: Display driver only/57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz
+  inflating: Display driver only/57_1200x2000_YT095IBLXL001-A-v1.73.8_ceac73a7_ota.tar.gz
+  inflating: Display driver only/gongban_57_logo-v1.73.8_f30aa089_ota.tar.gz
+  inflating: Display driver only/gongban_YT57XX_HK_7707N_-v7.3_7_006172d6_ota.tar.gz
+  inflating: Display driver only/gongban_57_SH-v1.73.8_1b9496ff_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_YT_FT8201-v1.73.8_47e9451e_ota.tar.gz
+  inflating: Display driver only/gongban_57_KL_jd9365_-v7.3_7_3d7b6308_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_Yt7705-v1.73.8_0d702102_ota.tar.gz
+  inflating: Display driver only/gongban_57_CarAUDIO_YT9707-v1.73.7_9f818621_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_sat7705-v1.73_c31afe38_ota.tar.gz
+  inflating: Display driver only/gongban_YT72XX_CYXY_9882Q-v1.73.8_31902e48_ota.tar.gz
+  inflating: Display driver only/gongban_YT57XX_SN9365_nosize-v1.73.8_9a3414e1_ota.tar.gz
+  inflating: Display driver only/gongban_57_YT_ER88577_10inch-v1.73.8_78ed27c6_ota.tar.gz
+  inflating: Display driver only/57_1200x2000_YT115IHLXL001-A-v1.73.8_8e32f8e1_ota.tar.gz
+  inflating: Display driver only/logo.mrf PARTIAL SUMMARY
+  inflating: Display driver only/gongban_YT57xx_1280x480-v1.73_09316688_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_WXlogo_jd9165-v1.73.8_31dae5d0_ota.tar.gz
+  inflating: Display driver only/gongban_YT57_Android_XHS7705-v1.73.7_45756046_ota.tar.gz
+  inflating: Display driver only/gongban_57_KL_JD9165-v1.73.8_2ae9d781_ota.tar.gz
+  inflating: Display driver only/gongban_YT57XX_XMH_-v7.3_7_fb74e102_ota.tar.gz
+  inflating: Display driver only/gongban_57_logo_YT_7705N-v1.73.8_80de7672_ota.tar.gz
+  inflating: Display driver only/gongban_YT57XX_wx_jd9165-v7.3_7_d3913884_ota.tar.gz
+  inflating: Display driver only/gongban_57_YT_ER88577_9inch-v1.73.8_dba6af49_ota.tar.gz
+  inflating: Display driver only/57_1200x2000_YT129IBLXL001-A-v1.73.8_ebe9721c_ota.tar.gz
+  inflating: Display driver only/gongban_57xx_1024x600MIPI_10_ips-v1.73.8_9d3bc14c_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_logo-v1.73.8_9a3414e1_ota.tar.gz
+  inflating: Display driver only/57_1200_2000_WD104FHM30TA-A0-v1.73.8_f0a6779c_ota.tar.gz
+  inflating: Display driver only/gongban_YT57XX_XHS_JD9366_-v7.3_7_ab683051_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_sat9707-v1.73.8_77e06f22_ota.tar.gz
+  inflating: Display driver only/57_1200x2000_WD9582HM30TA-B0-v1.73.8_51c4cf8b_ota.tar.gz
+  inflating: Display driver only/gongban_YT5760B_runshi_jd9165-v1.73.8_31dae5d0_ota.tar.gz
+inflating: Display driver only/gongban_57_logo-v1.73.8_93f812d7_ota.tar.gz
+  inflating: Display driver only/gongban_YT57XX_MC_-v7.3_7_e854a3c6_ota.tar.gz
+  inflating: Display driver only/gongban_57xx_xinlu-v1.73.8_1b28fa72_ota.tar.gz
+  inflating: Display driver only/gongban_YT5760B_OFD-v1.73.8_e3d35b58_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_768x1024_c0c4c660_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_1024x600-v1.73.8_65419550_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_1024x768-v1.73.8_a2a5ca07_ota.tar.gz
+  inflating: Display driver only/gongban_YT57_1280x720-v1.73.7_e65f89a5_ota.tar.gz
+  inflating: Display driver only/gongban_YT57xx_ui1-800x480-v1.72_42e1e595_ota.tar.gz
+  inflating: Display driver only/57_1200x2000_WD1152HMTB-v1.73.8_78532029_ota.tar.gz
+localhost:~#
+localhost:~# ls
+24kdiff                  Display driver only      Display driver only.zip  bench.py                 hello.c                  hello.js                 logo.bin                 readme.txt
+localhost:~# mv 24kdiff Display\ driver\ only
+localhost:~# mv logo.bin Display\ driver\ only
+localhost:~# cd Display\ driver\ only
+localhost:~/Display driver only# ls
+24kdiff                                                       gongban_57_logo-v1.73.8_9b3df880_ota.tar.gz                   gongban_YT57XX_wx_jd9165-v7.3_7_d3913884_ota.tar.gz
+57_1200_2000_WD104FHM30TA-A0-v1.73.8_f0a6779c_ota.tar.gz      gongban_57_logo-v1.73.8_f30aa089_ota.tar.gz                   gongban_YT57_1280x720-v1.73.7_e65f89a5_ota.tar.gz
+57_1200x2000_WD1152HMTB-v1.73.8_78532029_ota.tar.gz           gongban_57_logo_YT_7705N-v1.73.8_80de7672_ota.tar.gz          gongban_YT57_Android_XHS7705-v1.73.7_45756046_ota.tar.gz
+57_1200x2000_WD9582HM30TA-B0-v1.73.8_51c4cf8b_ota.tar.gz      gongban_57xx_1024X600MIPI_9_ips-v1.73.8_c4982822_ota.tar.gz   gongban_YT57xx_1024x600-v1.73.8_65419550_ota.tar.gz
+57_1200x2000_YT095IBLXL001-A-v1.73.8_ceac73a7_ota.tar.gz      gongban_57xx_1024x600MIPI_10_ips-v1.73.8_9d3bc14c_ota.tar.gz  gongban_YT57xx_1024x768-v1.73.8_a2a5ca07_ota.tar.gz
+57_1200x2000_YT104IHLXL002-A-v1.73.8_a271ef72_ota.tar.gz      gongban_57xx_1024x768_LG-v1.73.8_6c2ecf45_ota.tar.gz          gongban_YT57xx_1280x480-v1.73_09316688_ota.tar.gz
+57_1200x2000_YT115IHLXL001-A-v1.73.8_8e32f8e1_ota.tar.gz      gongban_57xx_768x1024_mipi-v1.73.8_c57dd4d2_ota.tar.gz        gongban_YT57xx_768x1024_c0c4c660_ota.tar.gz
+57_1200x2000_YT129IBLXL001-A-v1.73.8_ebe9721c_ota.tar.gz      gongban_57xx_JC_768x1024-v1.73.8_bead0010_ota.tar.gz          gongban_YT57xx_JMG_12.1logo-v1.73.8_7144dfda_ota.tar.gz
+57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz       gongban_57xx_xinlu-v1.73.8_1b28fa72_ota.tar.gz                gongban_YT57xx_WXlogo_jd9165-v1.73.8_31dae5d0_ota.tar.gz
+57_720x1280_WD101HBM30TE-U6-v1.73.8_aa03f960_ota.tar.gz       gongban_YT5760B_OFD-v1.73.8_e3d35b58_ota.tar.gz               gongban_YT57xx_YT_FT8201-v1.73.8_47e9451e_ota.tar.gz
+57_720x1920_K1238S6248-Q05-01-v1.73.8_f330f7a1_ota.tar.gz     gongban_YT5760B_YT-v1.73.8_fed699ec_ota.tar.gz                gongban_YT57xx_Yt7705-v1.73.8_0d702102_ota.tar.gz
+57_720x1920_WD123FHM30AA-D2-v1.73.8_a78b3924_ota.tar.gz       gongban_YT5760B_runshi_jd9165-v1.73.8_31dae5d0_ota.tar.gz     gongban_YT57xx_logo-v1.73.8_9a3414e1_ota.tar.gz
+gongban_57_CarAUDIO_YT9707-v1.73.7_9f818621_ota.tar.gz        gongban_YT57XX_HK_7707N_-v7.3_7_006172d6_ota.tar.gz           gongban_YT57xx_sat7705-v1.73_c31afe38_ota.tar.gz
+gongban_57_KL_JD9165-v1.73.8_2ae9d781_ota.tar.gz              gongban_YT57XX_MC_-v7.3_7_e854a3c6_ota.tar.gz                 gongban_YT57xx_sat9707-v1.73.8_77e06f22_ota.tar.gz
+gongban_57_KL_jd9365_-v7.3_7_3d7b6308_ota.tar.gz              gongban_YT57XX_SN9365_nosize-v1.73.8_9a3414e1_ota.tar.gz      gongban_YT57xx_ui1-800x480-v1.72_42e1e595_ota.tar.gz
+gongban_57_SH-v1.73.8_1b9496ff_ota.tar.gz                     gongban_YT57XX_WG_TBD_-v7.3_7_8239d0b4_ota.tar.gz             gongban_YT7216C_XHS-v1.73.8_e251a41c_ota.tar.gz
+gongban_57_YT_ER88577_10inch-v1.73.8_78ed27c6_ota.tar.gz      gongban_YT57XX_XHS_JD9366_-v7.3_7_ab683051_ota.tar.gz         gongban_YT72XX_CYXY_9882Q-v1.73.8_31902e48_ota.tar.gz
+gongban_57_YT_ER88577_9inch-v1.73.8_dba6af49_ota.tar.gz       gongban_YT57XX_XMH_-v7.3_7_fb74e102_ota.tar.gz                logo.bin
+gongban_57_logo-v1.73.8_93f812d7_ota.tar.gz                   gongban_YT57XX_v1.70_e834d203_ota.tar.gz                      logo.mrf PARTIAL SUMMARY
+localhost:~/Display driver only#
+localhost:~/Display driver only# find ./ -type f -name "*.gz" -exec ./24kdiff logo.bin "{}" \;
+Files logo.bin.24k and ./gongban_YT7216C_XHS-v1.73.8_e251a41c_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_720x1920_WD123FHM30AA-D2-v1.73.8_a78b3924_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57XX_v1.70_e834d203_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_logo-v1.73.8_9b3df880_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57xx_1024x768_LG-v1.73.8_6c2ecf45_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT5760B_YT-v1.73.8_fed699ec_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57xx_768x1024_mipi-v1.73.8_c57dd4d2_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_720x1920_K1238S6248-Q05-01-v1.73.8_f330f7a1_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57XX_WG_TBD_-v7.3_7_8239d0b4_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57xx_JC_768x1024-v1.73.8_bead0010_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_JMG_12.1logo-v1.73.8_7144dfda_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_1200x2000_YT104IHLXL002-A-v1.73.8_a271ef72_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_720x1280_WD101HBM30TE-U6-v1.73.8_aa03f960_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57xx_1024X600MIPI_9_ips-v1.73.8_c4982822_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_720x1280_WD090HBM30TC-U3-v1.73.8_086a15dc_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_1200x2000_YT095IBLXL001-A-v1.73.8_ceac73a7_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_logo-v1.73.8_f30aa089_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57XX_HK_7707N_-v7.3_7_006172d6_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_SH-v1.73.8_1b9496ff_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_YT_FT8201-v1.73.8_47e9451e_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_KL_jd9365_-v7.3_7_3d7b6308_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_Yt7705-v1.73.8_0d702102_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_CarAUDIO_YT9707-v1.73.7_9f818621_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_sat7705-v1.73_c31afe38_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT72XX_CYXY_9882Q-v1.73.8_31902e48_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57XX_SN9365_nosize-v1.73.8_9a3414e1_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_YT_ER88577_10inch-v1.73.8_78ed27c6_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_1200x2000_YT115IHLXL001-A-v1.73.8_8e32f8e1_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_1280x480-v1.73_09316688_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_WXlogo_jd9165-v1.73.8_31dae5d0_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57_Android_XHS7705-v1.73.7_45756046_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_KL_JD9165-v1.73.8_2ae9d781_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57XX_XMH_-v7.3_7_fb74e102_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_logo_YT_7705N-v1.73.8_80de7672_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57XX_wx_jd9165-v7.3_7_d3913884_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_YT_ER88577_9inch-v1.73.8_dba6af49_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_1200x2000_YT129IBLXL001-A-v1.73.8_ebe9721c_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57xx_1024x600MIPI_10_ips-v1.73.8_9d3bc14c_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_logo-v1.73.8_9a3414e1_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_1200_2000_WD104FHM30TA-A0-v1.73.8_f0a6779c_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57XX_XHS_JD9366_-v7.3_7_ab683051_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_sat9707-v1.73.8_77e06f22_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_1200x2000_WD9582HM30TA-B0-v1.73.8_51c4cf8b_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT5760B_runshi_jd9165-v1.73.8_31dae5d0_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57_logo-v1.73.8_93f812d7_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57XX_MC_-v7.3_7_e854a3c6_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_57xx_xinlu-v1.73.8_1b28fa72_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT5760B_OFD-v1.73.8_e3d35b58_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_768x1024_c0c4c660_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_1024x600-v1.73.8_65419550_ota.tar.gz.24k are identical
+Files logo.bin.24k and ./gongban_YT57xx_1024x768-v1.73.8_a2a5ca07_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57_1280x720-v1.73.7_e65f89a5_ota.tar.gz.24k differ
+Files logo.bin.24k and ./gongban_YT57xx_ui1-800x480-v1.72_42e1e595_ota.tar.gz.24k differ
+Files logo.bin.24k and ./57_1200x2000_WD1152HMTB-v1.73.8_78532029_ota.tar.gz.24k differ
+localhost:~/Display driver only# 
+
