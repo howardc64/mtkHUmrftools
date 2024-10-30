@@ -3,11 +3,11 @@ NAME
 
 SYOPSIS
 
-	mrfdump file
+	mrfdump [-l] file
 
 OPTIONS
 
-	no option for now
+	-l dump logo image into file.png
 
 DESCRIPTION
 
@@ -38,7 +38,7 @@ DESCRIPTION
 
 EXAMPLE
 
-% ./mrfdump logo.mrf
+% ./mrfdump -l logo.mrf
 
 
 ==== logo.mrf
@@ -57,8 +57,13 @@ Lvds
 = LOGO
 
 1024
-60
+600
 
+2457600+0 records in
+2457600+0 records out
+2457600 bytes transferred in 18.204267 secs (135001 bytes/sec)
+
+logo.mrf.png will contain logo image.
 
 % find ./ -type f -name "*.gz" -exec ./mrfdump "{}" \; > display_driver_only_results
 
