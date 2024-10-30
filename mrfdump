@@ -7,6 +7,8 @@ headerLength=4
 headerName=0x8
 panelFirst=0x318
 panelSecond=0x31C
+mrfVerion1=0x200
+mrfVerion2=0x218
 logoFirst=0x510
 logoSecond=0x514
 displayIF=0xE01
@@ -47,6 +49,15 @@ echo -n "length MB  "
 echo "scale=1;" $((${LengthStr})) / 1048576 | bc -l
 printf "name       "
 od -c -j${headerName} -N32 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r0\\"
+
+printf "\n= MRF Spec\n\n"
+od -c -j${mrfVerion1} -N9 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
+mrfV2="$(od -c -j${mrfVerion2} -N6 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r\\")"
+if [ ${mrfV2} == "V2.2.0" ]; then
+	echo ${mrfV2}
+	echo "logo image location ambiguous in V2.2.0. Dumped image likely incorrect (usually incorrectly centered)"
+fi
+
 printf "\n= Panel\n\n"
 od -c -j${displayIF} -N4 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
 od -A x2 -t u2 -j${panelFirst} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
