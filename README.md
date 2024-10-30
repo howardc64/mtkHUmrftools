@@ -125,7 +125,7 @@ No registration or login required. Simple to use
 - below is remaining screen capture, click code on upper left to see with out markdown formatting
 -   (ls is list, like DOS DIR, chmod +x make file executable, ./ is path to current directory. So to run executable in current directory type ./executable_name
 
-video https://youtu.be/88Kj6cB8D5M
+video https://youtu.be/nlz5M-ja_OU
 
 Loading...  
  
@@ -170,6 +170,7 @@ localhost:~# export_file logo.bin.png
 ====================================================================================
 
 video https://youtu.be/vqCk5WipFVo
+
 localhost:~# chmod +x 24kdiff
 localhost:~# unzip Display\ driver\ only.zip
 localhost:~# mv 24kdiff Display\ driver\ only
