@@ -139,7 +139,7 @@ Imported files are written to the home directory.
 localhost:~# ls
 bench.py    hello.c     hello.js    logo.bin    mrfdump     readme.txt
 localhost:~# chmod +x mrfdump
-localhost:~# ./mrfdump logo.bin
+localhost:~# ./mrfdump -l logo.bin
  
 **** logo.bin
  
@@ -159,6 +159,10 @@ Lvds
  
 1024
 600
+
+307200+0 records in
+307200+0 records out
+localhost:~# export_file logo.bin.png
 
 ====================================================================================
 ==== Simple online free Linux VM to compare logo.bin with display drivers
