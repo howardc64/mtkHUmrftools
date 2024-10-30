@@ -59,12 +59,13 @@ logoD2="$(od -A x2 -t u2 -j${logoSecond} -N2 ${mrfFile} | head -1 | cut -b9- | t
 echo ${logoD2}
 printf "\n"
 
-if [[ "${gzfile}" -eq 1 ]]; then
-	rm -rf customer_ota
-fi
-
 if [ ${dumpPic} == 1 ] ; then
 	dd bs=8 skip=$((${imageStart} / 8)) count=$((${logoD1} * ${logoD2} * 4 /8 )) if=${mrfFile} of=${mrfFile}img.bin
 	magick -depth 8 -size ${logoD1}x${logoD2} bgra:${mrfFile}img.bin ${mrfFile}.png 
+	mv ${mrfFile}.png ${1}.png
 	rm -rf ${mrfFile}img.bin
+fi
+
+if [[ "${gzfile}" -eq 1 ]]; then
+	rm -rf customer_ota
 fi
