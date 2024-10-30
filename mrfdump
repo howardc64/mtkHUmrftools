@@ -56,6 +56,7 @@ mrfV2="$(od -c -j${mrfVerion2} -N6 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\
 if [ ${mrfV2} == "V2.2.0" ]; then
 	echo ${mrfV2}
 	echo "logo image location ambiguous in V2.2.0. Dumped image likely incorrect (usually incorrectly centered)"
+	echo "24kdiff result will be incorrect, logo image start < 24k"
 fi
 
 printf "\n= Panel\n\n"
