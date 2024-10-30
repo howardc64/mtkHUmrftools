@@ -10,7 +10,15 @@ panelSecond=0x31C
 logoFirst=0x510
 logoSecond=0x514
 displayIF=0xE01
+imageStart=0x5e00
 gzfile=0
+dumpPic=0
+
+getopts :l opt
+if [ ${opt} == 'l' ]; then
+	dumpPic=1
+	shift 1
+fi
 
 if [[ $1 =~ \.gz$ ]];
 then
@@ -45,10 +53,18 @@ od -A x2 -t u2 -j${panelFirst} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\
 od -A x2 -t u2 -j${panelSecond} -N2 ${mrfFile} | head -1 |cut -b9- | tr -d " \t\r"
 
 printf "\n= LOGO\n\n"
-od -A x2 -t u2 -j${logoFirst} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
-od -A x2 -t u2 -j${logoSecond} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r"
+logoD1="$(od -A x2 -t u2 -j${logoFirst} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r")"
+echo ${logoD1}
+logoD2="$(od -A x2 -t u2 -j${logoSecond} -N2 ${mrfFile} | head -1 | cut -b9- | tr -d " \t\r")"
+echo ${logoD2}
 printf "\n"
 
 if [[ "${gzfile}" -eq 1 ]]; then
 	rm -rf customer_ota
+fi
+
+if [ ${dumpPic} == 1 ] ; then
+	dd bs=8 skip=$((${imageStart} / 8)) count=$((${logoD1} * ${logoD2} * 4 /8 )) if=${mrfFile} of=${mrfFile}img.bin
+	magick -depth 8 -size ${logoD1}x${logoD2} bgra:${mrfFile}img.bin ${mrfFile}.png 
+	rm -rf ${mrfFile}img.bin
 fi
