@@ -114,6 +114,7 @@ If tools becomes useful to help HU owners to dump and compare extracted logo.mrf
 
 ====================================================================================
 ==== simple online free Linux VM to dump logo.bin
+==== ~5min run time on slow free Linux VM
 ====================================================================================
 
 No registration or login required. Simple to use
@@ -168,7 +169,7 @@ localhost:~# export_file logo.bin.png
 
 ====================================================================================
 ==== Simple online free Linux VM to compare logo.bin with display drivers
-==== 15min run time on free online Linux VM. Much faster on own PC ( macOS / Linux )
+==== 15min run time on slow free online Linux VM. Much faster on own PC ( macOS / Linux )
 ====================================================================================
 
 video https://youtu.be/vqCk5WipFVo
