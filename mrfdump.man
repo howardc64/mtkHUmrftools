@@ -9,6 +9,8 @@ OPTIONS
 
 	-l dump logo image into file.png
 
+	Require ImageMagick package on macOS (usually already installed in linux distro)
+
 DESCRIPTION
 
 	file can be .mrf or .gz file
