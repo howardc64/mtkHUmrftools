@@ -55,8 +55,7 @@ Padded with FFh to end of this region
 200h - 2FFh
 
 MRFv1.1.1  
-Identical in the 3 different MRFs I checked
-
+A few files ( 2000 x 1200 ) have additional V2.2.0 string. These do not start logo image at 5E00h ( lower address ) and are inconsistent
 300h - 4FFh
 
 Panel Section  
@@ -87,7 +86,8 @@ end address = header length - 1
 User changing boot logo changed only first copy on my 1024*600 HU  
 Pixel format appears to be 32bit RGBA (or BGRA, didn’t check RGB order). A=0xFF  
 Blocks of 0s between 2 images  
-0 padding after 2nd image to the end  
+0 padding after 2nd image to the end
+few files starts are lower address than 5E00h, see V.2.2.0 in MRF spec in 200h section.
 
 binxelview settings to view images
 
@@ -95,6 +95,7 @@ Byte position to 5e00 to skip the first ~24k
 BPP = 32 (play with 2 parameter box below 4,4 or 4,0)  
 Width Try common width and height to see image 1280, 1024, 720, 768, 800 etc.  
 Height = 1  
+color will be wrong ( pixel is in BGRA byte order )
 
 GUESSES
 
