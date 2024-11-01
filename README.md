@@ -141,6 +141,7 @@ localhost:~# ls
 bench.py    hello.c     hello.js    logo.bin    mrfdump     readme.txt
 localhost:~# chmod +x mrfdump
 localhost:~# ./mrfdump -l logo.bin
+localhost:~# export_file logo.bin.png
  
 **** logo.bin
  
