@@ -15,10 +15,22 @@ displayIF=0xE01
 imageStart=0x5e00
 gzfile=0
 dumpPic=0
+newPic=0
+cutFile=0
 
-getopts :l opt
+getopts :lnc opt
+if [ ${opt} == 'c' ]; then
+	cutFile=1;
+	shift 1
+fi
 if [ ${opt} == 'l' ]; then
 	dumpPic=1
+	shift 1
+fi
+if [ ${opt} == 'n' ]; then
+        newPic=1
+        shift 1
+	picFile=$1
 	shift 1
 fi
 
@@ -76,6 +88,22 @@ if [ ${dumpPic} == 1 ] ; then
 	magick -depth 8 -size ${logoD1}x${logoD2} bgra:${mrfFile}img.bin ${mrfFile}.png 
 	mv ${mrfFile}.png ${1}.png
 	rm -rf ${mrfFile}img.bin
+fi
+
+if [ ${newPic} == 1 ] ; then
+	dd bs=8 count=$((${imageStart} / 8)) if=${mrfFile} of=${mrfFile}.tmp
+	magick ${picFile} -depth 8 bgra:- >> ${mrfFile}.tmp
+	filelen=$(wc -c ${mrfFile} | awk '{print $1;}')
+	skip=$((${imageStart} + ${logoD1} * ${logoD2} * 4))
+	dd bs=1024 skip=$((${skip}/1024)) count=$((${filelen}/1024-${skip}/1024)) if=${mrfFile} >> ${mrfFile}.tmp
+	rm -rf ${mrfFile}
+	mv ${mrfFile}.tmp ${mrfFile}
+fi
+
+if [ ${cutFile} == 1 ] ; then
+	dd bs=1024 count=$((${LengthStr}/1024)) if=${mrfFile} >> ${mrfFile}.tmp
+        rm -rf ${mrfFile}
+        mv ${mrfFile}.tmp ${mrfFile}
 fi
 
 if [[ "${gzfile}" -eq 1 ]]; then
