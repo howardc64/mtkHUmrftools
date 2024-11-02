@@ -4,12 +4,17 @@ NAME
 SYOPSIS
 
 	mrfdump [-l] file
+	mrfdump [-c] mrf_or_bin_file
+	mrfdumo [-n] png_file mrf_or_bin_file
 
 OPTIONS
 
 	-l dump logo image into file.png
+	-n change logo image into new image in file png_file
 
 	Require ImageMagick package on macOS (usually already installed in linux distro)
+
+	-c cut file to actual length in mrf file header eliminating padded 0s
 
 DESCRIPTION
 
