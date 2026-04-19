@@ -1,0 +1,140 @@
+Here’s a focused analysis of the file **before offset `0x00000E00` (3584 bytes)**.
+
+---
+
+## 🔍 High-level observations
+
+* The first 3.5 KB looks like a **header + metadata region**, not image pixel data.
+* It contains:
+
+  * Structured binary fields
+  * Repeated marker patterns
+  * Embedded ASCII text (`"logo"`)
+  * Large blocks of padding (`0x00` and `0xFF`)
+
+---
+
+## 🧱 Breakdown of the first bytes
+
+### 1. File signature / magic (first ~8 bytes)
+
+```
+88 16 88 58 00 5C 80 00
+```
+
+* Likely a **custom format identifier**
+* Repeated later with slight variation (`89 16 89 58`), suggesting:
+
+  * Versioning
+  * Section markers
+
+---
+
+### 2. Embedded ASCII label
+
+```
+6C 6F 67 6F 00 ...
+→ "logo"
+```
+
+* Strong indicator this is a **resource file or asset container**
+* Followed by null padding → fixed-length string field
+
+---
+
+### 3. Padding / reserved space
+
+* Long sequences of:
+
+  * `00` → zeroed memory (uninitialized or reserved)
+  * `FF` → often used as **erased flash memory marker**
+
+This suggests:
+
+* The format is likely designed for **embedded systems or firmware**
+* Fixed offsets matter
+
+---
+
+### 4. Secondary header / section marker
+
+```
+89 16 89 58 00 02 00 00 01 00 00 00 ...
+```
+
+This looks like a structured block:
+
+Possible interpretation:
+
+* `89 16 89 58` → section ID
+* `00 02` → type or version
+* `00 00 01 00` → little-endian integer (maybe count = 256 or 1 depending on grouping)
+
+---
+
+## 🧩 Structural interpretation
+
+The region before `0xE00` is very likely:
+
+### ➤ File layout hypothesis
+
+```
+[0x0000 - ~0x0020]   Main header (magic, identifiers)
+[~0x0020 - ~0x0100]  Metadata (name = "logo", flags)
+[~0x0100 - ~0x0200]  Section descriptor
+[~0x0200 - 0x0E00]   Reserved / alignment / lookup tables
+```
+
+---
+
+## ⚙️ Key characteristics
+
+* **Little-endian encoding** (based on integer patterns)
+* **Aligned structure** (lots of padding)
+* **Multiple headers** → suggests:
+
+  * chunked format
+  * or multi-section resource file
+* No obvious compression signatures (e.g., zlib, LZ4) in this region
+
+---
+
+## 🚧 What is *not* here
+
+* No clear image pixel data yet
+* No standard file signatures (PNG, JPEG, BMP, etc.)
+* No readable JSON/XML or text config
+
+---
+
+## 🧠 Likely purpose
+
+This section is probably:
+
+* A **container header for a display asset (logo)**
+* Used by:
+
+  * firmware
+  * bootloader UI
+  * embedded display system
+
+---
+
+## ➡️ Next useful step
+
+To go deeper, I’d suggest:
+
+* Analyze **right after `0xE00`** → likely where actual image or compressed data begins
+* Look for:
+
+  * repeating patterns (raw pixels)
+  * compression headers
+  * palette tables
+
+---
+
+If you want, I can:
+
+* Decode the next segment
+* Try to reconstruct the image
+* Reverse the full format structure step-by-step
